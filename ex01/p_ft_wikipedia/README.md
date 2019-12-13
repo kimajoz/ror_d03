@@ -29,6 +29,9 @@ ruby -I test:lib test/p_ft_wikipedia_test.rb
 to check all TODO config file filled:
 grep -Hrn 'TODO' –color=always .
 
+to test with irb:
+irb -Ilib -rp_ft_wikipedia
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
