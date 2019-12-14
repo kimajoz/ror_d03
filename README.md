@@ -95,3 +95,42 @@ include Test::Unit::Assertions
 All tests should now run !!
 
 https://stackoverflow.com/questions/12317921/why-undefined-method-assert-equal-is-thrown-even-after-requiring-test-unit
+
+# Installing Rails(ex03):
+sudo gem install rails
+
+Erreurs: si ca nous retourne: ERROR:  Error installing rails:
+        zeitwerk requires Ruby version >= 2.4.4.
+=> Mettre à jour, ou installer(ds notre cas) ruby avec:
+\curl -sSL https://get.rvm.io | bash -s stable
+source /Users/billettepy/.rvm/scripts/rvm
+rvm install ruby --latest #(of rvm install ruby-2.6.3 for specific version)
+rvm use ruby --latest
+sudo gem install rails
+
+We now create our Hello World Application:
+rails new HelloWorld
+cd HelloWorld
+
+Pour tester:
+rails server
+puis ouvrir le navigateur sur:
+http://localhost:3000/
+
+On crée notre application/page HelloWorld:
+rails generate controller Welcome index
+echo "<h1>Hello World</h1>" > app/views/welcome/index.html.erb
+vim config/routes.rb
+and add code:
+root 'welcome#index'
+
+Simply restart server rails in background with:
+rails s -d
+and to kill server later, just use:
+kill -9 $(cat tmp/pids/server.pid)
+
+You can now work on the file, and they will hot reload automatically !
+
+Enjoy ! :)
+
+https://guides.rubyonrails.org/getting_started.html#hello-rails-bang
