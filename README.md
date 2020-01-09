@@ -20,10 +20,10 @@ gem build deepthought.gemspec
 4) Test you replaced all your 'TODO' config part:
 grep -Hrn 'TODO' –color=always .
 
-5) To check everything is working fine type:
+optionnal: (5) To check everything is working fine type:
 bin/console
 (if you haven't, install the require gems missing, ex:
-gem install colorize
+gem install colorize)
 
 6) Install our Gem:
 gem install ./deepthought-0.0.1.gem
