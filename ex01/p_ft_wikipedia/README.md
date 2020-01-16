@@ -42,6 +42,9 @@ irb -Ilib -rft_wikipedia
 en une line:
 gem build p_ft_wikipedia.gemspec && gem install ./p_ft_wikipedia-0.0.1.gem && gem install nokogiri && irb -Ilib -rft_wikipedia
 
+Puis à l'interieur:
+Ft_wikipedia.search("Kiss")
+
 (si une erreur ds le gemspec apparait: faire un "git add ." cela devrait corriger l'erreur.) C'est du a un oubli de la correction du gem au niveau du repository git
 ## Development
 
