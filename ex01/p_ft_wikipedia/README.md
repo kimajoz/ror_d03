@@ -23,15 +23,26 @@ Or install it yourself as:
 
 ## Usage
 
-gem build p_ft_wikipedia.gemspec && gem install p_ft_wikipedia-0.0.1.gem
+gem build p_ft_wikipedia.gemspec
+
+# To install gem:
+gem install ./p_ft_wikipedia-0.0.1.gem
+
 ruby -I test:lib test/p_ft_wikipedia_test.rb
 
 to check all TODO config file filled:
 grep -Hrn 'TODO' –color=always .
 
-to test with irb:
-irb -Ilib -rp_ft_wikipedia
+# to install nokogiri dependencies:
+gem install nokogiri
 
+to test with irb:
+irb -Ilib -rft_wikipedia
+
+en une line:
+gem build p_ft_wikipedia.gemspec && gem install ./p_ft_wikipedia-0.0.1.gem && gem install nokogiri && irb -Ilib -rft_wikipedia
+
+(si une erreur ds le gemspec apparait: faire un "git add ." cela devrait corriger l'erreur.) C'est du a un oubli de la correction du gem au niveau du repository git
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

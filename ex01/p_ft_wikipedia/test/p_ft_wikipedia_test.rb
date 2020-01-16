@@ -5,7 +5,4 @@ class PFtWikipediaTest < Minitest::Test
     refute_nil ::PFtWikipedia::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
-  end
 end
