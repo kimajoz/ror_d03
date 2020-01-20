@@ -15,10 +15,10 @@ class Ft_wikipedia
 		
 		@@nlink += 1
 		@@ary.push(name)
-		@@lang = "en"
+		#@@lang = "en"
 		
 		#p @@nlink
-		url = "https://en.wikipedia.org/wiki/" + name
+		url = "https://wikipedia.org/wiki/" + name
 		if @@nlink == 1
 			puts "First search @ :#{url}"
 		else
@@ -26,9 +26,20 @@ class Ft_wikipedia
 		end
 
 		html = open(url)
-		doc = Nokogiri::HTML(html.read)
+		doc = Nokogiri::HTML(html)
 		doc.encoding = 'utf-8'
-		@@lang = html.class
+		# open and write to a file with ruby
+		File.open('yourfile', 'w') { |f|
+			f.write(doc.css("html"))
+		}
+		
+		if @@nlink == 1
+			p "lannggggg"
+			@@lang = doc.css("html")["lang"]
+			@@lang.each do |elem| 
+				puts elem
+			end
+		end
 		#p "lang:"
 		p @@lang
 
@@ -37,18 +48,17 @@ class Ft_wikipedia
 		# 1) un article disponible sur Wikipedia
 		# 2) Gestion des langues sur page suivante/preced (en)
 		# 3) test for names: "directory", "problem", "einstein", "kiss", "matter"...
-
+	
 		n = 0
 		p "a"
 		href = doc.css("div.mw-parser-output p a")[n]["href"]
 		while href[0] == "#"
-			#&& href.include? "/wiki/" == false
 			n = n+1
-			#if href.include? "/wiki/"
 			href = doc.css("div.mw-parser-output p a")[n]["href"]
-			#else
-				#p "The link should only be to wikipedia"
-			#end
+		end
+		if href.include? "/wiki/" == false
+			p "The link should only be to wikipedia"
+			exit
 		end
 		p "b"
 		word = doc.css("div.mw-parser-output p a")[n]["title"]
@@ -58,6 +68,10 @@ class Ft_wikipedia
 
 		if @@ary.include? word
 			p "Loop detected there is no way to philosophy here"
+			p word + " found here in array:"
+			@@ary.each do |elem| 
+				puts elem
+			end
 			return
 		end
 		p "c"
